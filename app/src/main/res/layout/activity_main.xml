@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:videoId="S0Q4gqBUs7c">
+        app:videoId="KLSXITpk854">
 
     </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
 
@@ -183,40 +183,40 @@
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:layout_marginRight="5dp"
-                android:text="0.25x" />
+                android:text="0.5x" />
 
             <Button
                 android:id="@+id/playbackBtn3"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:layout_marginRight="5dp"
-                android:text="0.25x" />
+                android:text="1x" />
 
             <Button
                 android:id="@+id/playbackBtn4"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:layout_marginRight="5dp"
-                android:text="0.25x" />
+                android:text="2x" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/customPlaybackBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:text="Custom: 2x"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/playbackBtnLayout" />
+<!--        <Button-->
+<!--            android:id="@+id/customPlaybackBtn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="36dp"-->
+<!--            android:text="Custom: 2x"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/playbackBtnLayout" />-->
 
-        <SeekBar
-            android:id="@+id/playbackSeekBar"
-            android:layout_width="193dp"
-            android:layout_height="22dp"
-            android:layout_marginTop="14dp"
-            android:layout_marginEnd="40dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/playbackBtnLayout" />
+<!--        <SeekBar-->
+<!--            android:id="@+id/playbackSeekBar"-->
+<!--            android:layout_width="193dp"-->
+<!--            android:layout_height="22dp"-->
+<!--            android:layout_marginTop="14dp"-->
+<!--            android:layout_marginEnd="40dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/playbackBtnLayout" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
