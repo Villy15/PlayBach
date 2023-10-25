@@ -30,8 +30,7 @@
             android:layout_height="wrap_content"
             android:text="Welcome to PlayBach"
             android:textSize="24sp" />
-
-        <!-- Login UI Components -->
+        
 
         <EditText
             android:id="@+id/editTextUsername"
