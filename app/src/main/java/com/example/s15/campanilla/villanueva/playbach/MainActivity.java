@@ -21,11 +21,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        youTubePlayerView = findViewById(R.id.youtube_player_view);
-
-        playbackText = findViewById(R.id.playbackText);
-
-        initYouTubePlayerView(youTubePlayerView);
+//        youTubePlayerView = findViewById(R.id.youtube_player_view);
+//
+//        playbackText = findViewById(R.id.playbackText);
+//
+//        initYouTubePlayerView(youTubePlayerView);
     }
 
 //    This function initializes the YouTubePlayerView.
