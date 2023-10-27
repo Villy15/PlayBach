@@ -42,9 +42,9 @@
 
             <Switch
                 android:id="@+id/loopSwitch"
-                android:layout_width="80dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
                 android:layout_marginRight="20dp" />
 
             <TextView
@@ -76,15 +76,17 @@
 
             <EditText
                 android:id="@+id/startTimeStamp"
-                android:layout_width="111dp"
-                android:layout_height="59dp"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:autofillHints="00:15"
                 android:inputType="text"
+                android:minHeight="48dp"
                 android:text="00:15" />
 
             <Button
                 android:id="@+id/startBtn"
+                style="@style/SquareButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/start" />
@@ -113,17 +115,19 @@
 
             <EditText
                 android:id="@+id/endTimeStamp"
-                android:layout_width="111dp"
-                android:layout_height="59dp"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:autofillHints="00:15"
                 android:inputType="text"
+                android:minHeight="48dp"
                 android:text="00:15" />
 
             <Button
                 android:id="@+id/endBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/SquareButton"
                 android:text="@string/end" />
 
         </LinearLayout>
@@ -134,7 +138,6 @@
         android:id="@+id/divider1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="10dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -145,17 +148,20 @@
         android:id="@+id/constraintLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/divider3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+        app:layout_constraintTop_toBottomOf="@+id/divider1">
+
 
         <TextView
             android:id="@+id/playbackText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:text="Playback speed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -164,59 +170,66 @@
             android:id="@+id/playbackBtnLayout"
             android:layout_width="410dp"
             android:layout_height="70dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="1dp"
             android:gravity="center"
             android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/playbackText">
 
             <Button
                 android:id="@+id/playbackBtn1"
+                style="@style/SquareButton"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
                 android:text="0.25x" />
 
             <Button
                 android:id="@+id/playbackBtn2"
+                style="@style/SquareButton"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
                 android:text="0.5x" />
 
             <Button
                 android:id="@+id/playbackBtn3"
+                style="@style/SquareButton"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
                 android:text="1x" />
 
             <Button
                 android:id="@+id/playbackBtn4"
+                style="@style/SquareButton"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
                 android:text="2x" />
         </LinearLayout>
 
-<!--        <Button-->
-<!--            android:id="@+id/customPlaybackBtn"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="36dp"-->
-<!--            android:text="Custom: 2x"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/playbackBtnLayout" />-->
+        <!--        <Button-->
+        <!--            android:id="@+id/customPlaybackBtn"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="36dp"-->
+        <!--            android:text="Custom: 2x"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/playbackBtnLayout" />-->
 
-<!--        <SeekBar-->
-<!--            android:id="@+id/playbackSeekBar"-->
-<!--            android:layout_width="193dp"-->
-<!--            android:layout_height="22dp"-->
-<!--            android:layout_marginTop="14dp"-->
-<!--            android:layout_marginEnd="40dp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/playbackBtnLayout" />-->
+        <!--        <SeekBar-->
+        <!--            android:id="@+id/playbackSeekBar"-->
+        <!--            android:layout_width="193dp"-->
+        <!--            android:layout_height="22dp"-->
+        <!--            android:layout_marginTop="14dp"-->
+        <!--            android:layout_marginEnd="40dp"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/playbackBtnLayout" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -224,7 +237,6 @@
         android:id="@+id/divider3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="10dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -260,22 +272,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/secionsText">
 
+
             <Button
                 android:id="@+id/sectionsBtn1"
+                style="@style/SquareButton"
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
                 android:text="Intro" />
 
             <Button
                 android:id="@+id/sectionsBtn2"
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
+                style="@style/SquareButton"
+                android:layout_marginRight="4dp"
+                android:layout_marginLeft="4dp"
                 android:text="Verse" />
 
             <Button
                 android:id="@+id/sectionsBtn3"
                 android:layout_width="95dp"
                 android:layout_height="wrap_content"
+                style="@style/SquareButton"
+                android:layout_marginRight="4dp"
+                android:layout_marginLeft="4dp"
                 android:text="Chorus" />
 
             <!--            <Button-->
@@ -301,22 +323,31 @@
             <EditText
                 android:id="@+id/sectionTxt1"
                 android:layout_width="90dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
                 android:inputType="text"
+                android:minHeight="48dp"
                 android:text="00:00" />
 
             <EditText
                 android:id="@+id/sectionTxt10"
                 android:layout_width="90dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:inputType="text"
+                android:layout_marginRight="4dp"
+                android:layout_marginLeft="4dp"
+                android:minHeight="48dp"
                 android:text="00:00" />
 
             <EditText
                 android:id="@+id/sectionTxt11"
                 android:layout_width="90dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
                 android:inputType="text"
+                android:minHeight="48dp"
                 android:text="00:00" />
 
             <!--            <EditText-->
@@ -344,3 +375,4 @@
         app:menu="@menu/bottom_navigation_menu" />
 
 
+</androidx.constraintlayout.widget.ConstraintLayout>
