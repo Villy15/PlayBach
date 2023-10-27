@@ -24,21 +24,13 @@
             android:layout_height="218dp"
             app:srcCompat="@drawable/bach" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Welcome to PlayBach"
-            android:textSize="24sp" />
-        
-
         <EditText
-            android:id="@+id/editTextUsername"
+            android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="Username"
-            android:inputType="text"
+            android:layout_marginTop="8dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
             android:singleLine="true" />
 
         <EditText
@@ -51,18 +43,20 @@
             android:singleLine="true" />
 
         <Button
-            android:id="@+id/buttonLogin"
+            android:id="@+id/buttonRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Login" />
+            android:text="Register" />
 
-        <Button
-            android:id="@+id/buttonSignUp"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Sign Up" />
+            android:layout_marginTop="8dp"
+            android:text="Already have an account? Login"
+            android:textColor="@android:color/darker_gray" />
+
 
 
     </LinearLayout>

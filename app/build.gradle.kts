@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.s15.campanilla.villanueva.playbach"
-        minSdk = 21
+        minSdk = 19
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
