@@ -7,6 +7,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     YouTubePlayerView youTubePlayerView;
     TextView playbackText;
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         youTubePlayerView = findViewById(R.id.youtube_player_view);
 
         playbackText = findViewById(R.id.playbackText);
+
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         initYouTubePlayerView(youTubePlayerView);
     }
