@@ -9,8 +9,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.s15.campanilla.villanueva.playbach.fragments.CommunityFragment;
 import com.example.s15.campanilla.villanueva.playbach.fragments.HomeFragment;
 import com.example.s15.campanilla.villanueva.playbach.fragments.ProfileFragment;
+import com.example.s15.campanilla.villanueva.playbach.fragments.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -41,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
 
                 if (id == R.id.nav_home) {
                     loadNavFragment(new HomeFragment());
+                } else if (id == R.id.nav_songs) {
+                    loadNavFragment(new ProfileFragment());
+                } else if (id == R.id.nav_community) {
+                    loadNavFragment(new CommunityFragment());
+                } else if (id == R.id.nav_settings) {
+                    loadNavFragment(new SettingsFragment());
                 } else if (id == R.id.nav_profile) {
                     loadNavFragment(new ProfileFragment());
                 }
