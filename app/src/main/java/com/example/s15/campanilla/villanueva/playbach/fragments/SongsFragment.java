@@ -9,11 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.s15.campanilla.villanueva.playbach.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SongsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class SongsFragment extends Fragment {
     public SongsFragment() {
         // Required empty public constructor

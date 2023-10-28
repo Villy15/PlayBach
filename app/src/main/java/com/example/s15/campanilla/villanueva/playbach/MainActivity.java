@@ -13,6 +13,7 @@ import com.example.s15.campanilla.villanueva.playbach.fragments.CommunityFragmen
 import com.example.s15.campanilla.villanueva.playbach.fragments.HomeFragment;
 import com.example.s15.campanilla.villanueva.playbach.fragments.ProfileFragment;
 import com.example.s15.campanilla.villanueva.playbach.fragments.SettingsFragment;
+import com.example.s15.campanilla.villanueva.playbach.fragments.SongsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 if (id == R.id.nav_home) {
                     loadNavFragment(new HomeFragment());
                 } else if (id == R.id.nav_songs) {
-                    loadNavFragment(new ProfileFragment());
+                    loadNavFragment(new SongsFragment());
                 } else if (id == R.id.nav_community) {
                     loadNavFragment(new CommunityFragment());
                 } else if (id == R.id.nav_settings) {
