@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "575124494039",
+    "project_id": "playbach-4f7fe",
+    "storage_bucket": "playbach-4f7fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575124494039:android:5b4568d991c3815803c292",
+        "android_client_info": {
+          "package_name": "com.example.s15.campanilla.villanueva.playbach"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8Iet4fWPY7urQhmPubwUhtEO1O9B21SE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
