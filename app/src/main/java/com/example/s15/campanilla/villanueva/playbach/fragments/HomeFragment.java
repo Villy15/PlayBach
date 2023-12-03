@@ -3,6 +3,7 @@ package com.example.s15.campanilla.villanueva.playbach.fragments;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,7 +95,10 @@ public class HomeFragment extends Fragment {
         youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer) {
-                String videoId = "IwInqrN_auU";
+                SharedPreferences preferences = getActivity().getSharedPreferences("SongsAdapterPreferences", Context.MODE_PRIVATE);
+                String youtubeUrl = preferences.getString("youtubeUrl", "KLSXITpk854");
+                String videoId = youtubeUrl;
+                Log.d("HomeFragment", "YouTube URL retrieved from SharedPreferences: " + youtubeUrl);
                 youTubePlayer.loadVideo(videoId, 0);
 
                 setLoopSection(youTubePlayer);
@@ -169,7 +173,7 @@ public class HomeFragment extends Fragment {
     }
 
     // This function sets the loop section.
-     private void setLoopSection(YouTubePlayer youTubePlayer) {
+    private void setLoopSection(YouTubePlayer youTubePlayer) {
         Button startBtn = getView().findViewById(R.id.startBtn);
         Button endBtn = getView().findViewById(R.id.endBtn);
 
@@ -183,7 +187,7 @@ public class HomeFragment extends Fragment {
             endTimeStamp.setText(formatTime(startTime));
         });
 
-     }
+    }
     // This function formats the time from seconds to minutes and seconds.
     private String formatTime(float timeInSeconds) {
         int totalSeconds = (int) timeInSeconds;
@@ -262,7 +266,5 @@ public class HomeFragment extends Fragment {
     private void jumpToSection (YouTubePlayer youTubePlayer, float timeStamp) {
         youTubePlayer.seekTo(timeStamp);
     }
-
-
 
 }

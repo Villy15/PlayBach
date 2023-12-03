@@ -1,7 +1,6 @@
 package com.example.s15.campanilla.villanueva.playbach;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -10,7 +9,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.s15.campanilla.villanueva.playbach.Classes.Users;
 import com.example.s15.campanilla.villanueva.playbach.fragments.CommunityFragment;
 import com.example.s15.campanilla.villanueva.playbach.fragments.HomeFragment;
 import com.example.s15.campanilla.villanueva.playbach.fragments.ProfileFragment;
@@ -42,18 +40,15 @@ public class MainActivity extends AppCompatActivity {
         loadNavFragment(new HomeFragment());
 
 
-        DBManager dbManager = new DBManager();
-        Users newUser = new Users("ada@example.com", "password123");
-
-        dbManager.addUser(newUser);
+//        DBManager dbManager = new DBManager();
+//        Users newUser = new Users("ada@example.com", "password123");
+//
+//        dbManager.addUser(newUser);
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-
-                // print id
-                Log.d(TAG, "onNavigationItemSelected: " + id);
 
                 if (id == R.id.nav_home) {
                     loadNavFragment(new HomeFragment());
@@ -72,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void loadNavFragment(Fragment fragment) {
+    void loadNavFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
