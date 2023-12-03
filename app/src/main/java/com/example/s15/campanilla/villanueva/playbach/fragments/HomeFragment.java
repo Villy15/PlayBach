@@ -1,5 +1,7 @@
 package com.example.s15.campanilla.villanueva.playbach.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.s15.campanilla.villanueva.playbach.R;
@@ -62,6 +65,16 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         youTubePlayerView = view.findViewById(R.id.youtube_player_view);
+
+        // Toggle or hide the layouts using sharedPreferences
+        ConstraintLayout loopSection = view.findViewById(R.id.constraintLayout);
+        ConstraintLayout playbackSpeedSection = view.findViewById(R.id.constraintLayout2);
+        ConstraintLayout sectionsSection = view.findViewById(R.id.constraintLayout3);
+
+        SharedPreferences preferences = getActivity().getSharedPreferences("SettingsPreferences", Context.MODE_PRIVATE);
+        loopSection.setVisibility(preferences.getBoolean("toggleSwitch1", true) ? View.VISIBLE : View.GONE);
+        playbackSpeedSection.setVisibility(preferences.getBoolean("toggleSwitch2", true) ? View.VISIBLE : View.GONE);
+        sectionsSection.setVisibility(preferences.getBoolean("toggleSwitch3", true) ? View.VISIBLE : View.GONE);
 
         // Loop Section
         loopSwitch = view.findViewById(R.id.loopSwitch);
