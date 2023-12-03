@@ -34,21 +34,16 @@ public class HomeFragment extends Fragment {
 
     // Loop Section
     Switch loopSwitch;
-    EditText startTimeStamp;
-    float startTime = 0;
-    EditText endTimeStamp;
-    float endTime = 10;
+    EditText startTimeStamp, endTimeStamp;
+    float startTime = 0, endTime = 10;
 
     // Playback speeds
     TextView playbackText;
 
     // Sections
-    Button sectionsTxtBtn1;
-    float sectionsTimeStamp1;
-    Button sectionsTxtBtn2;
-    float sectionsTimeStamp2;
-    Button sectionsTxtBtn3;
-    float sectionsTimeStamp3;
+    Button sectionsTxtBtn1, sectionsTxtBtn2, sectionsTxtBtn3, sectionsTxtBtn4, sectionsTxtBtn5, sectionsTxtBtn6, sectionsTxtBtn7, sectionsTxtBtn8;
+    float sectionsTimeStamp1, sectionsTimeStamp2, sectionsTimeStamp3, sectionsTimeStamp4, sectionsTimeStamp5, sectionsTimeStamp6, sectionsTimeStamp7, sectionsTimeStamp8;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -228,23 +223,50 @@ public class HomeFragment extends Fragment {
         Button sectionsBtn1 = getView().findViewById(R.id.sectionsBtn1);
         Button sectionsBtn2 = getView().findViewById(R.id.sectionsBtn2);
         Button sectionsBtn3 = getView().findViewById(R.id.sectionsBtn3);
+        Button sectionsBtn4 = getView().findViewById(R.id.sectionsBtn4);
+        Button sectionsBtn5 = getView().findViewById(R.id.sectionsBtn5);
+        Button sectionsBtn6 = getView().findViewById(R.id.sectionsBtn6);
+        Button sectionsBtn7 = getView().findViewById(R.id.sectionsBtn7);
+        Button sectionsBtn8 = getView().findViewById(R.id.sectionsBtn8);
 
-        // Clicking on the button will set the time of sectionTxtBtn1 to the current time.
         sectionsBtn1.setOnClickListener(view -> {
             sectionsTimeStamp1 = currentTimeStamp;
             sectionsTxtBtn1.setText(formatTime(currentTimeStamp));
         });
 
-        // Clicking on the button will set the time of sectionTxtBtn2 to the current time.
         sectionsBtn2.setOnClickListener(view -> {
             sectionsTimeStamp2 = currentTimeStamp;
             sectionsTxtBtn2.setText(formatTime(currentTimeStamp));
         });
 
-        // Clicking on the button will set the time of sectionTxtBtn3 to the current time.
         sectionsBtn3.setOnClickListener(view -> {
             sectionsTimeStamp3 = currentTimeStamp;
             sectionsTxtBtn3.setText(formatTime(currentTimeStamp));
+        });
+
+        sectionsBtn4.setOnClickListener(view -> {
+            sectionsTimeStamp4 = currentTimeStamp;
+            sectionsTxtBtn4.setText(formatTime(currentTimeStamp));
+        });
+
+        sectionsBtn5.setOnClickListener(view -> {
+            sectionsTimeStamp5 = currentTimeStamp;
+            sectionsTxtBtn5.setText(formatTime(currentTimeStamp));
+        });
+
+        sectionsBtn6.setOnClickListener(view -> {
+            sectionsTimeStamp6 = currentTimeStamp;
+            sectionsTxtBtn6.setText(formatTime(currentTimeStamp));
+        });
+
+        sectionsBtn7.setOnClickListener(view -> {
+            sectionsTimeStamp7 = currentTimeStamp;
+            sectionsTxtBtn7.setText(formatTime(currentTimeStamp));
+        });
+
+        sectionsBtn8.setOnClickListener(view -> {
+            sectionsTimeStamp8 = currentTimeStamp;
+            sectionsTxtBtn8.setText(formatTime(currentTimeStamp));
         });
     }
 
@@ -252,15 +274,21 @@ public class HomeFragment extends Fragment {
         sectionsTxtBtn1 = getView().findViewById(R.id.sectionsTxtBtn1);
         sectionsTxtBtn2 = getView().findViewById(R.id.sectionsTxtBtn2);
         sectionsTxtBtn3 = getView().findViewById(R.id.sectionsTxtBtn3);
+        sectionsTxtBtn4 = getView().findViewById(R.id.sectionsTxtBtn4);
+        sectionsTxtBtn5 = getView().findViewById(R.id.sectionsTxtBtn5);
+        sectionsTxtBtn6 = getView().findViewById(R.id.sectionsTxtBtn6);
+        sectionsTxtBtn7 = getView().findViewById(R.id.sectionsTxtBtn7);
+        sectionsTxtBtn8 = getView().findViewById(R.id.sectionsTxtBtn8);
 
-        // Clicking on the button will jump to the time of sectionTxtBtn1.
         sectionsTxtBtn1.setOnClickListener(view -> jumpToSection(youTubePlayer, sectionsTimeStamp1));
-
-        // Clicking on the button will jump to the time of sectionTxtBtn2.
         sectionsTxtBtn2.setOnClickListener(view -> jumpToSection(youTubePlayer, sectionsTimeStamp2));
-
-        // Clicking on the button will jump to the time of sectionTxtBtn3.
         sectionsTxtBtn3.setOnClickListener(view -> jumpToSection(youTubePlayer, sectionsTimeStamp3));
+        sectionsTxtBtn4.setOnClickListener(view -> jumpToSection(youTubePlayer, sectionsTimeStamp4));
+        sectionsTxtBtn5.setOnClickListener(view -> jumpToSection(youTubePlayer, sectionsTimeStamp5));
+        sectionsTxtBtn6.setOnClickListener(view -> jumpToSection(youTubePlayer, sectionsTimeStamp6));
+        sectionsTxtBtn7.setOnClickListener(view -> jumpToSection(youTubePlayer, sectionsTimeStamp7));
+        sectionsTxtBtn8.setOnClickListener(view -> jumpToSection(youTubePlayer, sectionsTimeStamp8));
+
     }
 
     private void jumpToSection (YouTubePlayer youTubePlayer, float timeStamp) {
