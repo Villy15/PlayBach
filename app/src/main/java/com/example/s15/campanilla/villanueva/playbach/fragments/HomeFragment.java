@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,11 +18,33 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
+import java.util.Locale;
+
 
 public class HomeFragment extends Fragment {
 
+    // YouTube Player
     YouTubePlayerView youTubePlayerView;
+    // Current TimeStamp
+    float currentTimeStamp;
+
+    // Loop Section
+    Switch loopSwitch;
+    EditText startTimeStamp;
+    float startTime = 0;
+    EditText endTimeStamp;
+    float endTime = 10;
+
+    // Playback speeds
     TextView playbackText;
+
+    // Sections
+    Button sectionsTxtBtn1;
+    float sectionsTimeStamp1;
+    Button sectionsTxtBtn2;
+    float sectionsTimeStamp2;
+    Button sectionsTxtBtn3;
+    float sectionsTimeStamp3;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -38,6 +62,13 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         youTubePlayerView = view.findViewById(R.id.youtube_player_view);
+
+        // Loop Section
+        loopSwitch = view.findViewById(R.id.loopSwitch);
+        startTimeStamp = view.findViewById(R.id.startTimeStamp);
+        endTimeStamp = view.findViewById(R.id.endTimeStamp);
+
+        // Playback speeds
         playbackText = view.findViewById(R.id.playbackText);
 
         initYouTubePlayerView(youTubePlayerView);
@@ -53,7 +84,21 @@ public class HomeFragment extends Fragment {
                 String videoId = "IwInqrN_auU";
                 youTubePlayer.loadVideo(videoId, 0);
 
+                setLoopSection(youTubePlayer);
                 setPlaybackSpeedButtonsClickListeners(youTubePlayer);
+                setSections(youTubePlayer);
+
+                loopSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                    // print isChecked to console
+                    System.out.println("Hi " + isChecked);
+                    if (isChecked) {
+                        startLooping(youTubePlayer);
+                    } else {
+                        stopLooping(youTubePlayer);
+                    }
+                });
+
+                setSectionsClickListeners(youTubePlayer);
             }
 
             @Override
@@ -62,6 +107,13 @@ public class HomeFragment extends Fragment {
 
                 String playbackRateString = getPlaybackSpeedString(playbackRate);
                 playbackText.setText(String.format("Playback: %s", playbackRateString));
+            }
+
+            @Override
+            public void onCurrentSecond(@NonNull YouTubePlayer youTubePlayer, float second) {
+                super.onCurrentSecond(youTubePlayer, second);
+
+                currentTimeStamp = second;
             }
 
         });
@@ -102,4 +154,102 @@ public class HomeFragment extends Fragment {
 
         return playbackRateString;
     }
+
+    // This function sets the loop section.
+     private void setLoopSection(YouTubePlayer youTubePlayer) {
+        Button startBtn = getView().findViewById(R.id.startBtn);
+        Button endBtn = getView().findViewById(R.id.endBtn);
+
+        startBtn.setOnClickListener(view -> {
+            startTime = currentTimeStamp;
+            startTimeStamp.setText(formatTime(startTime));
+        });
+
+        endBtn.setOnClickListener(view -> {
+            endTime = currentTimeStamp;
+            endTimeStamp.setText(formatTime(startTime));
+        });
+
+     }
+    // This function formats the time from seconds to minutes and seconds.
+    private String formatTime(float timeInSeconds) {
+        int totalSeconds = (int) timeInSeconds;
+        int minutes = totalSeconds / 60;
+        int seconds = totalSeconds % 60;
+
+        return String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+    }
+
+    private AbstractYouTubePlayerListener loopingListener;
+
+    //   This function starts the looping.
+    private void startLooping(YouTubePlayer youTubePlayer) {
+        loopingListener = new AbstractYouTubePlayerListener() {
+            @Override
+            public void onCurrentSecond(@NonNull YouTubePlayer youTubePlayer, float second) {
+                super.onCurrentSecond(youTubePlayer, second);
+
+                if (second >= endTime) {
+                    youTubePlayer.seekTo(startTime);
+                }
+            }
+        };
+
+        youTubePlayer.addListener(loopingListener);
+        youTubePlayer.seekTo(startTime);
+        youTubePlayer.play();
+    }
+
+    private void stopLooping(YouTubePlayer youTubePlayer) {
+        if (loopingListener != null) {
+            youTubePlayer.removeListener(loopingListener);
+            loopingListener = null;
+        }
+    }
+
+    private void setSections (YouTubePlayer youTubePlayer) {
+        Button sectionsBtn1 = getView().findViewById(R.id.sectionsBtn1);
+        Button sectionsBtn2 = getView().findViewById(R.id.sectionsBtn2);
+        Button sectionsBtn3 = getView().findViewById(R.id.sectionsBtn3);
+
+        // Clicking on the button will set the time of sectionTxtBtn1 to the current time.
+        sectionsBtn1.setOnClickListener(view -> {
+            sectionsTimeStamp1 = currentTimeStamp;
+            sectionsTxtBtn1.setText(formatTime(currentTimeStamp));
+        });
+
+        // Clicking on the button will set the time of sectionTxtBtn2 to the current time.
+        sectionsBtn2.setOnClickListener(view -> {
+            sectionsTimeStamp2 = currentTimeStamp;
+            sectionsTxtBtn2.setText(formatTime(currentTimeStamp));
+        });
+
+        // Clicking on the button will set the time of sectionTxtBtn3 to the current time.
+        sectionsBtn3.setOnClickListener(view -> {
+            sectionsTimeStamp3 = currentTimeStamp;
+            sectionsTxtBtn3.setText(formatTime(currentTimeStamp));
+        });
+    }
+
+    private void setSectionsClickListeners (YouTubePlayer youTubePlayer) {
+        sectionsTxtBtn1 = getView().findViewById(R.id.sectionsTxtBtn1);
+        sectionsTxtBtn2 = getView().findViewById(R.id.sectionsTxtBtn2);
+        sectionsTxtBtn3 = getView().findViewById(R.id.sectionsTxtBtn3);
+
+        // Clicking on the button will jump to the time of sectionTxtBtn1.
+        sectionsTxtBtn1.setOnClickListener(view -> jumpToSection(youTubePlayer, sectionsTimeStamp1));
+
+        // Clicking on the button will jump to the time of sectionTxtBtn2.
+        sectionsTxtBtn2.setOnClickListener(view -> jumpToSection(youTubePlayer, sectionsTimeStamp2));
+
+        // Clicking on the button will jump to the time of sectionTxtBtn3.
+        sectionsTxtBtn3.setOnClickListener(view -> jumpToSection(youTubePlayer, sectionsTimeStamp3));
+    }
+
+    private void jumpToSection (YouTubePlayer youTubePlayer, float timeStamp) {
+        youTubePlayer.seekTo(timeStamp);
+    }
+
+
+
 }
