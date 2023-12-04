@@ -6,19 +6,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.example.s15.campanilla.villanueva.playbach.LoginActivity;
 import com.example.s15.campanilla.villanueva.playbach.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileFragment extends Fragment {
 
     Button logoutButton;
+
+    TextView textViewDisplayName;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -36,6 +42,27 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         logoutButton = view.findViewById(R.id.logoutButton);
+        textViewDisplayName = view.findViewById(R.id.textView3);
+        ImageView imageViewProfilePicture = view.findViewById(R.id.imageView2);
+
+        // Get the current user
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser != null) {
+            String displayName = currentUser.getDisplayName();
+            textViewDisplayName.setText(displayName);
+
+            if (currentUser != null && currentUser.getPhotoUrl() != null) {
+                // Get the original photo URL
+                String originalPhotoUrl = currentUser.getPhotoUrl().toString();
+
+                // Changes higher res
+                String highResPhotoUrl = originalPhotoUrl.replace("s96-c", "s512-c"); // For example, requesting a 512x512 image
+
+                Glide.with(this)
+                        .load(highResPhotoUrl)
+                        .into(imageViewProfilePicture);
+            }
+        }
 
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
