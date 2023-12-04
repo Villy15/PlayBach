@@ -4,22 +4,21 @@ public class Users {
     private String firstName;
     private String lastName;
     private String email;
-    private String password;
+    private String displayName;
+    private String photoUrl;
 
     public Users() {
     }
 
     // Email password constructor
-    public Users(String email, String password) {
+    public Users(String firstName, String lastName, String email, String displayName) {
         this.email = email;
-        this.password = password;
     }
 
-    public Users(String firstName, String lastName, String email, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Users(String displayName, String email, String photoUrl) {
+        this.displayName = displayName;
         this.email = email;
-        this.password = password;
+        this.photoUrl = photoUrl;
     }
 
     public String getFirstName() {
@@ -46,12 +45,19 @@ public class Users {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getDisplayName() {
+        return displayName;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
 }

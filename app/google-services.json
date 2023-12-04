@@ -12,7 +12,20 @@
           "package_name": "com.example.s15.campanilla.villanueva.playbach"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "575124494039-0njp9h1iefokc2lk631cq84ubjbruvqp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.s15.campanilla.villanueva.playbach",
+            "certificate_hash": "8b5c746230e36090a7816b53f3951b1dfb2cfaec"
+          }
+        },
+        {
+          "client_id": "575124494039-gjij9dmb9hs9qkgfoeebfmf1i2940v2r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyD8Iet4fWPY7urQhmPubwUhtEO1O9B21SE"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "575124494039-gjij9dmb9hs9qkgfoeebfmf1i2940v2r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

@@ -71,7 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
                                             "Playbach",
                                             "User",
                                             email,
-                                            password
+                                            "Playbach User"
                                     );
 
                                     dbManager.addUser(newUser);
