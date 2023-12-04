@@ -68,19 +68,13 @@
 
                         <TextView
                             android:id="@+id/textView4"
-                            android:layout_width="wrap_content"
+                            android:layout_width="60dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:textAlignment="center"
                             android:text="3 Songs Practiced"
                             android:textSize="12sp" />
 
-                        <TextView
-                            android:id="@+id/textView5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="5 Followers"
-                            android:textSize="12sp" />
                     </LinearLayout>
                 </LinearLayout>
 

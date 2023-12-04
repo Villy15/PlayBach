@@ -5,7 +5,6 @@ public class Users {
     private String lastName;
     private String email;
     private String password;
-    private String username;
 
     public Users() {
     }
@@ -16,12 +15,11 @@ public class Users {
         this.password = password;
     }
 
-    public Users(String firstName, String lastName, String email, String password, String username) {
+    public Users(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.username = username;
     }
 
     public String getFirstName() {
@@ -56,11 +54,4 @@ public class Users {
         this.password = password;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 }
