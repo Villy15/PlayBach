@@ -49,7 +49,7 @@ public class AddSong extends AppCompatActivity {
 
                 DBManager dbManager = new DBManager();
 
-                dbManager.addSong(songTitle, youtubeLink, imageUrl, contributorName);
+                dbManager.addSong(songTitle, videoId, imageUrl, contributorName);
             }
         });
     }

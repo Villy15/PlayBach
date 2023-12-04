@@ -10,15 +10,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.s15.campanilla.villanueva.playbach.Classes.Songs;
 import com.example.s15.campanilla.villanueva.playbach.LoginActivity;
 import com.example.s15.campanilla.villanueva.playbach.R;
+import com.example.s15.campanilla.villanueva.playbach.SongsAdapter;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProfileFragment extends Fragment {
     //private FirebaseAuth firebaseAuth;
@@ -47,6 +54,10 @@ public class ProfileFragment extends Fragment {
     Button logoutButton;
 
     TextView textViewDisplayName;
+
+    private RecyclerView songsRecyclerView;
+    private SongsAdapter songsAdapter;
+    private List<Songs> songsList = new ArrayList<>();
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -108,6 +119,38 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        songsRecyclerView = view.findViewById(R.id.songsRecyclerView);
+        songsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        populateSongsList();
+
+        songsAdapter = new SongsAdapter(songsList);
+        songsRecyclerView.setAdapter(songsAdapter);
+    }
+
+    private void populateSongsList () {
+        songsList.add(new Songs(
+                        "Littleroot Town - Pokemon",
+                        "vbLu5O8rxQk",
+                        "https://img.youtube.com/vi/vbLu5O8rxQk/0.jpg",
+                        "Adrian Villanueva"
+                )
+        );
+
+        songsList.add(new Songs(
+                        "Persona 5 - Life Will Change (中英歌詞)",
+                        "CGwH6rZk7VM",
+                        "https://img.youtube.com/vi/CGwH6rZk7VM/0.jpg",
+                        "Adrian Villanueva"
+                )
+        );
+
+        songsList.add(new Songs(
+                        "I Really Want to Stay At Your House",
+                        "h4VJGNNSQnw",
+                        "https://img.youtube.com/vi/h4VJGNNSQnw/0.jpg",
+                        "Adrian Villanueva"
+                )
+        );
     }
 }
