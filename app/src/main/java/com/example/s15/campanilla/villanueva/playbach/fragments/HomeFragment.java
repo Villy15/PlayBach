@@ -179,7 +179,7 @@ public class HomeFragment extends Fragment {
 
         endBtn.setOnClickListener(view -> {
             endTime = currentTimeStamp;
-            endTimeStamp.setText(formatTime(startTime));
+            endTimeStamp.setText(formatTime(endTime));
         });
 
     }
