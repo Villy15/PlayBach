@@ -161,18 +161,31 @@ public class LoginActivity extends AppCompatActivity {
 
                 FirebaseUser user = mAuth.getCurrentUser();
 
+
                 DBManager dbManager = new DBManager();
-                Users newUser = new Users(
-                        user.getDisplayName(),
-                        user.getEmail(),
-                        user.getPhotoUrl().toString()
-                );
+                // If user exists in auth but not in database, add them to database
 
-                dbManager.addUser(newUser);
+                dbManager.checkUserExists(user.getEmail()).addOnCompleteListener(task1 -> {
+                    if (task1.isSuccessful()) {
+                        boolean exists = task1.getResult();
+                        if (!exists) {
+                            Users newUser = new Users(
+                                    user.getDisplayName(),
+                                    user.getEmail(),
+                                    user.getPhotoUrl().toString()
+                            );
 
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+                            dbManager.addUser(newUser);
+                        }
+                        // Proceed to MainActivity
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Log.e(TAG, "Error checking if user exists", task.getException());
+                    }
+                });
+
 
             } else {
                 Toast.makeText(LoginActivity.this, "Login failed.",
