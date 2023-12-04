@@ -18,7 +18,6 @@ import com.example.s15.campanilla.villanueva.playbach.fragments.SettingsFragment
 import com.example.s15.campanilla.villanueva.playbach.fragments.SongsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
