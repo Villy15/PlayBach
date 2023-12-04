@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.s15.campanilla.villanueva.playbach.Classes.Songs;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -45,11 +47,16 @@ public class AddSong extends AppCompatActivity {
 
                 String imageUrl = "https://img.youtube.com/vi/" + videoId + "/0.jpg";
 
-                String contributorName = "Name"; // Replace with the actual contributor name
+                // Get the name of the contributor from the Firebase user
+                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                String contributorName = currentUser.getDisplayName();
 
                 DBManager dbManager = new DBManager();
 
                 dbManager.addSong(songTitle, videoId, imageUrl, contributorName);
+
+                // Go back to Songs Fragment
+                finish();
             }
         });
     }

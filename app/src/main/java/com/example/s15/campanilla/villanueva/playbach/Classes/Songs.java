@@ -6,6 +6,10 @@ public class Songs {
     private String thumbnail;
     private String contributor;
 
+    // No-argument constructor
+    public Songs() {
+    }
+
 
     public Songs(String title,  String youtubeUrl, String thumbnail, String contributor) {
         this.title = title;

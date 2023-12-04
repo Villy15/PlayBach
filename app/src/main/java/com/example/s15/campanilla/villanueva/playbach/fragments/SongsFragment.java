@@ -2,6 +2,9 @@ package com.example.s15.campanilla.villanueva.playbach.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +16,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.s15.campanilla.villanueva.playbach.AddSong;
 import com.example.s15.campanilla.villanueva.playbach.Classes.Songs;
+import com.example.s15.campanilla.villanueva.playbach.DBManager;
 import com.example.s15.campanilla.villanueva.playbach.R;
 import com.example.s15.campanilla.villanueva.playbach.SongsAdapter;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 
 public class SongsFragment extends Fragment {
@@ -55,29 +65,28 @@ public class SongsFragment extends Fragment {
         songsRecyclerView.setAdapter(songsAdapter);
     }
 
-    private void populateSongsList () {
-        songsList.add(new Songs(
-                "Littleroot Town - Pokemon",
-                "vbLu5O8rxQk",
-                "https://img.youtube.com/vi/vbLu5O8rxQk/0.jpg",
-                "Adrian Villanueva"
-            )
-        );
+    private void populateSongsList() {
+        DBManager dbManager = new DBManager();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String displayName = user.getDisplayName();
 
-        songsList.add(new Songs(
-                "Persona 5 - Life Will Change (中英歌詞)",
-                "CGwH6rZk7VM",
-                "https://img.youtube.com/vi/CGwH6rZk7VM/0.jpg",
-                "Adrian Villanueva"
-            )
-        );
-
-        songsList.add(new Songs(
-                "I Really Want to Stay At Your House",
-                "h4VJGNNSQnw",
-                "https://img.youtube.com/vi/h4VJGNNSQnw/0.jpg",
-                "Adrian Villanueva"
-            )
-        );
+            dbManager.getAllSongsByUser(displayName, new OnSuccessListener<List<Songs>>() {
+                @Override
+                public void onSuccess(List<Songs> songs) {
+                    songsList.clear(); // Clear existing songs
+                    songsList.addAll(songs); // Add all songs from Firestore
+                    songsAdapter.notifyDataSetChanged(); // Notify the adapter
+                }
+            }, new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.w("TAG", "Error getting documents: ", e);
+                }
+            });
+        } else {
+            // Handle case where user is null
+            Log.w("TAG", "User is not logged in");
+        }
     }
 }
