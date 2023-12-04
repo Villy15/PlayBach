@@ -33,11 +33,11 @@
         
 
         <EditText
-            android:id="@+id/editTextUsername"
+            android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Username"
+            android:hint="Email"
             android:inputType="text"
             android:singleLine="true" />
 
@@ -57,11 +57,44 @@
             android:layout_marginTop="16dp"
             android:text="Login" />
 
+<!--        or login with-->
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="or login with"
+            android:textAlignment="center"
+            android:textColor="@android:color/darker_gray" />
+
+<!--        Login with google-->
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="center_horizontal"
+            android:visibility="visible" />
+
+<!--        dont have an account-->
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingTop="30dp"
+            android:text="Don't have an account?"
+            android:textAlignment="center"
+            android:textColor="@android:color/darker_gray" />
+
         <Button
             android:id="@+id/buttonSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:background="@android:color/transparent"
+            android:textColor="@android:color/holo_blue_dark"
             android:text="Sign Up" />
 
 
