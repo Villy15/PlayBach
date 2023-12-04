@@ -1,25 +1,27 @@
 package com.example.s15.campanilla.villanueva.playbach.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.s15.campanilla.villanueva.playbach.MainActivity;
+import com.example.s15.campanilla.villanueva.playbach.Classes.Songs;
 import com.example.s15.campanilla.villanueva.playbach.R;
+import com.example.s15.campanilla.villanueva.playbach.SongsAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class SongsFragment extends Fragment {
-
-    TextView songTitle;
-
-    ImageView songImage;
+    private RecyclerView songsRecyclerView;
+    private SongsAdapter songsAdapter;
+    private List<Songs> songsList = new ArrayList<>();
     public SongsFragment() {
         // Required empty public constructor
     }
@@ -34,25 +36,38 @@ public class SongsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        songTitle = view.findViewById(R.id.songTitle1);
-        songImage = view.findViewById(R.id.songImage1);
+        songsRecyclerView = view.findViewById(R.id.songsRecyclerView);
+        songsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        songTitle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
+        populateSongsList();
 
-        songImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
+        songsAdapter = new SongsAdapter(songsList);
+        songsRecyclerView.setAdapter(songsAdapter);
     }
 
+    private void populateSongsList () {
+        songsList.add(new Songs(
+                "Littleroot Town - Pokemon",
+                "vbLu5O8rxQk",
+                "https://img.youtube.com/vi/vbLu5O8rxQk/0.jpg",
+                "Adrian Villanueva"
+            )
+        );
 
+        songsList.add(new Songs(
+                "Persona 5 - Life Will Change (中英歌詞)",
+                "CGwH6rZk7VM",
+                "https://img.youtube.com/vi/CGwH6rZk7VM/0.jpg",
+                "Adrian Villanueva"
+            )
+        );
+
+        songsList.add(new Songs(
+                "I Really Want to Stay At Your House",
+                "h4VJGNNSQnw",
+                "https://img.youtube.com/vi/h4VJGNNSQnw/0.jpg",
+                "Adrian Villanueva"
+            )
+        );
+    }
 }
