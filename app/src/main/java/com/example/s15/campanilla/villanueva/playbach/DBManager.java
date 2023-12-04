@@ -4,6 +4,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.s15.campanilla.villanueva.playbach.Classes.Songs;
 import com.example.s15.campanilla.villanueva.playbach.Classes.Users;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -61,4 +62,26 @@ public class DBManager {
 
         return taskCompletionSource.getTask();
     }
+
+    public void addSong(String title, String youtubeUrl, String thumbnail, String contributor) {
+        // Create a Songs object with the provided information
+        Songs song = new Songs(title, youtubeUrl, thumbnail, contributor);
+
+        db.collection("songs")
+                .add(song)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding document", e);
+                    }
+                });
+    }
+    
+
 }

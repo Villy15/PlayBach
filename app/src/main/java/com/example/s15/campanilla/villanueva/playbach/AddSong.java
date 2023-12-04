@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.s15.campanilla.villanueva.playbach.Classes.Songs;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -43,7 +45,11 @@ public class AddSong extends AppCompatActivity {
 
                 String imageUrl = "https://img.youtube.com/vi/" + videoId + "/0.jpg";
 
+                String contributorName = "Name"; // Replace with the actual contributor name
 
+                DBManager dbManager = new DBManager();
+
+                dbManager.addSong(songTitle, youtubeLink, imageUrl, contributorName);
             }
         });
     }

@@ -21,15 +21,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileFragment extends Fragment {
-
-<<<<<<< HEAD
     //private FirebaseAuth firebaseAuth;
 
-    public ProfileFragment() {}
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
 
 
 //        FirebaseApp.initializeApp(requireContext());
@@ -50,8 +44,6 @@ public class ProfileFragment extends Fragment {
 //            }
 //        });
 
-        return  inflater.inflate(R.layout.fragment_profile, container, false);
-=======
     Button logoutButton;
 
     TextView textViewDisplayName;
@@ -117,6 +109,5 @@ public class ProfileFragment extends Fragment {
         });
 
 
->>>>>>> f662dadccddaf87dc30270704e85146ec9489345
     }
 }
