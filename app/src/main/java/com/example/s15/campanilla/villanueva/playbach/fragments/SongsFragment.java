@@ -1,5 +1,6 @@
 package com.example.s15.campanilla.villanueva.playbach.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.s15.campanilla.villanueva.playbach.AddSong;
 import com.example.s15.campanilla.villanueva.playbach.Classes.Songs;
 import com.example.s15.campanilla.villanueva.playbach.R;
 import com.example.s15.campanilla.villanueva.playbach.SongsAdapter;
@@ -26,10 +28,18 @@ public class SongsFragment extends Fragment {
         // Required empty public constructor
     }
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_songs, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_songs, container, false);
+        View addSongButton = view.findViewById(R.id.addSong);
+        addSongButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AddSong.class);
+                startActivity(intent);
+            }
+        });
+
+        return view;
     }
 
     @Override
