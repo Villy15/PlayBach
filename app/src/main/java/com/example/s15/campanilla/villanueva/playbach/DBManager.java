@@ -7,8 +7,11 @@ import androidx.annotation.NonNull;
 import com.example.s15.campanilla.villanueva.playbach.Classes.Users;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.TaskCompletionSource;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class DBManager {
     private static final String TAG = "DBManager";
@@ -33,5 +36,29 @@ public class DBManager {
                         Log.w(TAG, "Error adding document", e);
                     }
                 });
+    }
+
+    public Task<Boolean> checkUserExists(String email) {
+        TaskCompletionSource<Boolean> taskCompletionSource = new TaskCompletionSource<>();
+
+        db.collection("users") // Replace with your collection name
+                .whereEqualTo("email", email) // Assuming 'email' is the field name in your Firestore
+                .limit(1)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        QuerySnapshot querySnapshot = task.getResult();
+                        if (querySnapshot != null && !querySnapshot.isEmpty()) {
+                            taskCompletionSource.setResult(true);
+                        } else {
+                            taskCompletionSource.setResult(false);
+                        }
+                    } else {
+                        Log.e(TAG, "Error checking if user exists", task.getException());
+                        taskCompletionSource.setException(task.getException());
+                    }
+                });
+
+        return taskCompletionSource.getTask();
     }
 }
