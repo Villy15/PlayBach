@@ -13,6 +13,9 @@ public class Users {
     // Email password constructor
     public Users(String firstName, String lastName, String email, String displayName) {
         this.email = email;
+        this.displayName = displayName;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public Users(String displayName, String email, String photoUrl) {
